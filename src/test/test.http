@@ -1,0 +1,78 @@
+#### GET request to example server
+#GET https://examples.http-client.intellij.net/get
+#    ?generated-in=IntelliJ IDEA
+#
+####
+
+POST http://localhost:8080/gift
+Content-Type: application/json
+
+{
+  "sender": "seoyeon",
+  "coins": 500
+}
+###
+
+DELETE http://localhost:8080/gift/1
+
+###
+
+PUT http://localhost:8080/gift/1
+Content-Type: application/json
+
+{
+  "sender": "seoyeon-updated",
+  "coins": 999
+}
+
+###
+POST http://localhost:8080/streamers
+Content-Type: application/json
+
+{
+  "name": "Andrew"
+}
+
+###
+POST http://localhost:8080/streamers/1/gifts
+Content-Type: application/json
+
+{
+  "sender":"Alex",
+  "coins":900
+}
+###
+POST http://localhost:8080/streamers
+Content-Type: application/json
+
+{
+"name": "Andrew"
+}
+
+###
+###
+GET http://localhost:8080/streamers/1/gifts
+
+###
+GET http://localhost:8080/gifts
+
+###
+GET http://localhost:8080/streamers
+
+###
+GET http://localhost:8080/streamers/leaderboard
+
+###
+GET http://localhost:8080/gifts/top
+
+###
+GET http://localhost:8080/statistics
+
+###
+POST http://localhost:8080/gifts/streamers/1
+Content-Type: application/json
+
+{
+  "sender": "Alex",
+  "coins": 900
+}
