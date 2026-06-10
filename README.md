@@ -4,27 +4,24 @@
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.x-brightgreen)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue)
 ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED)
-# Live Gifting Backend
 
-A backend REST API project built with **Spring Boot**, **PostgreSQL**, and **Docker**, inspired by the gifting system used in live streaming platforms such as TikTok LIVE.
+A backend REST API project built with **Spring Boot**, **PostgreSQL**, and **Docker**, inspired by the virtual gifting workflow used in live streaming platforms.
 
-The project demonstrates modern backend development practices including layered architecture, DTO-based API design, exception handling, database persistence, and containerized deployment.
+The project demonstrates backend engineering concepts including layered architecture, REST API development, data persistence with Spring Data JPA, DTO-based communication, exception handling, API documentation, and containerized deployment.
 
 ---
 
 # Project Overview
 
-This application simulates a live gifting platform where users can create streamers, send virtual gifts, track gift transactions, and retrieve platform statistics through REST APIs.
+This application simulates a live gifting platform where users can:
 
-The primary goal of this project is to showcase backend engineering skills commonly used in production systems, including:
+* Create and manage streamers
+* Send virtual gifts
+* Track gift transaction history
+* View streamer leaderboards
+* Retrieve platform-wide statistics
 
-* RESTful API development
-* Layered architecture (Controller → Service → Repository)
-* Spring Data JPA and PostgreSQL integration
-* DTO-based request and response models
-* Global exception handling
-* Docker containerization
-* OpenAPI / Swagger documentation
+The project was developed to strengthen practical backend engineering skills commonly used in production systems.
 
 ---
 
@@ -43,80 +40,93 @@ The primary goal of this project is to showcase backend engineering skills commo
 
 # Architecture
 
-```text
-                +----------------+
-                |     Client     |
-                +----------------+
-                         |
-                         v
-                +----------------+
-                |   Controller    |
-                +----------------+
-                         |
-                         v
-                +----------------+
-                |    Service      |
-                +----------------+
-                         |
-                         v
-                +----------------+
-                |   Repository    |
-                +----------------+
-                         |
-                         v
-                +----------------+
-                |   PostgreSQL    |
-                +----------------+
+```
+                +------------------+
+                |      Client      |
+                +------------------+
+                          |
+                          v
+                +------------------+
+                |  REST Controller |
+                +------------------+
+                          |
+                          v
+                +------------------+
+                | Business Service |
+                +------------------+
+                          |
+                          v
+                +------------------+
+                | Spring Data JPA  |
+                |    Repository    |
+                +------------------+
+                          |
+                          v
+                +------------------+
+                |   PostgreSQL DB  |
+                +------------------+
+```
+
+---
+
+# Project Structure
+
+```
+src/main/java
+├── controller
+├── service
+├── repository
+├── entity
+├── dto
+├── exception
+└── LiveGiftingBackendApplication
 ```
 
 ---
 
 # Key Features
 
-* Create and manage streamers
-* Send virtual gifts to streamers
-* Retrieve streamer leaderboards
-* Store and query gift transaction history
-* Generate overall platform statistics
-* Layered backend architecture for maintainability
-* DTO-based API contracts
-* Centralized global exception handling
-* PostgreSQL persistence using Spring Data JPA
-* Dockerized application deployment
-* Interactive API testing through Swagger UI
+* RESTful API design using Spring Boot
+* Layered architecture (Controller → Service → Repository)
+* Streamer management APIs
+* Virtual gift processing
+* Gift transaction history
+* Leaderboard retrieval
+* Platform statistics aggregation
+* DTO-based request and response models
+* Global exception handling
+* PostgreSQL integration via Spring Data JPA
+* Dockerized deployment
+* Interactive API documentation with Swagger UI
 
 ---
 
 # API Endpoints
 
-| Method | Endpoint                        | Description                                 |
-| ------ | ------------------------------- | ------------------------------------------- |
-| GET    | `/streamers`                    | Retrieve all streamers                      |
-| POST   | `/streamers`                    | Create a new streamer                       |
-| GET    | `/streamers/{id}`               | Retrieve streamer details                   |
-| GET    | `/streamers/leaderboard`        | Retrieve leaderboard                        |
-| GET    | `/gifts`                        | Retrieve available gifts                    |
-| POST   | `/gifts/streamers/{streamerId}` | Send a gift                                 |
-| GET    | `/gifts/streamers/{streamerId}` | Retrieve gifts received by a streamer       |
-| GET    | `/transactions`                 | Retrieve all gift transactions              |
-| GET    | `/streamers/{id}/history`       | Retrieve transaction history for a streamer |
-| GET    | `/statistics`                   | Retrieve platform statistics                |
+| Method | Endpoint                        | Description                           |
+| ------ | ------------------------------- | ------------------------------------- |
+| GET    | `/streamers`                    | Retrieve all streamers                |
+| POST   | `/streamers`                    | Create a new streamer                 |
+| GET    | `/streamers/{id}`               | Retrieve streamer details             |
+| GET    | `/streamers/leaderboard`        | Retrieve leaderboard                  |
+| GET    | `/gifts`                        | Retrieve available gifts              |
+| POST   | `/gifts/streamers/{streamerId}` | Send a gift                           |
+| GET    | `/gifts/streamers/{streamerId}` | Retrieve gifts received by a streamer |
+| GET    | `/transactions`                 | Retrieve all gift transactions        |
+| GET    | `/streamers/{id}/history`       | Retrieve transaction history          |
+| GET    | `/statistics`                   | Retrieve platform statistics          |
 
 ---
 
-# Swagger Documentation
+# API Documentation
 
-After starting the application, interactive API documentation is available at:
+Interactive API documentation is available through Swagger UI after starting the application.
 
 ```
 http://localhost:8080/swagger-ui/index.html
 ```
 
-You may optionally include a screenshot below.
-
-```
-docs/swagger.png
-```
+![Swagger UI](docs/swagger.png)
 
 ---
 
@@ -129,8 +139,6 @@ docs/swagger.png
 * PostgreSQL
 * Docker (optional)
 
----
-
 ## Local Setup
 
 Create a PostgreSQL database:
@@ -139,7 +147,7 @@ Create a PostgreSQL database:
 live_gifting_db
 ```
 
-Configure `application.properties`:
+Update `application.properties`:
 
 ```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/live_gifting_db
@@ -155,9 +163,9 @@ Run the application:
 
 ---
 
-## Docker Setup
+# Docker
 
-Build the Docker image:
+Build the image:
 
 ```bash
 docker build -t live-gifting-backend .
@@ -169,17 +177,41 @@ Run the container:
 docker run -p 8080:8080 live-gifting-backend
 ```
 
+The application will be available at:
+
+```
+http://localhost:8080
+```
+
+---
+
+# Skills Demonstrated
+
+* Java backend development
+* Spring Boot framework
+* REST API design
+* Layered architecture
+* Spring Data JPA
+* PostgreSQL integration
+* DTO pattern
+* Exception handling
+* Docker containerization
+* API documentation with Swagger
+* Git and GitHub workflow
+
 ---
 
 # Future Improvements
 
-* JWT-based authentication and authorization
-* Redis caching for frequently accessed data
-* Comprehensive unit and integration testing
+* JWT authentication and authorization
+* Redis caching
+* Unit and integration testing
 * GitHub Actions CI/CD pipeline
-* Cloud deployment (AWS, Azure, or GCP)
-* Monitoring and logging support
-* Rate limiting and API security enhancements
+* Cloud deployment (AWS / Azure / GCP)
+* Pagination support
+* Rate limiting
+* Monitoring and logging
+* API versioning
 
 ---
 
@@ -187,13 +219,14 @@ docker run -p 8080:8080 live-gifting-backend
 
 This project strengthened practical experience in:
 
-* Designing RESTful APIs
-* Implementing layered backend architecture
+* Designing scalable REST APIs
+* Structuring maintainable backend applications
 * Working with relational databases using Spring Data JPA
-* Building maintainable service-oriented code
-* Managing data persistence with PostgreSQL
-* Containerizing backend services with Docker
-* Using Git and GitHub for version control and collaboration
+* Implementing service-oriented architecture
+* Managing persistent data with PostgreSQL
+* Containerizing applications using Docker
+* Documenting APIs with Swagger/OpenAPI
+* Using Git and GitHub for version control
 
 ---
 
@@ -201,10 +234,4 @@ This project strengthened practical experience in:
 
 **Seoyeon Lee**
 
-Backend engineering practice project developed as part of personal portfolio preparation for software engineering internship applications.
-
-## API Documentation (Swagger)
-
-The project includes OpenAPI documentation powered by Swagger UI.
-
-![Swagger UI](docs/swagger.png)
+Personal backend engineering project created as part of software engineering internship portfolio preparation.
