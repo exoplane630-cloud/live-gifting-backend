@@ -1,5 +1,11 @@
 # Live Gifting Backend
 
+![Java](https://img.shields.io/badge/Java-21-orange)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.x-brightgreen)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue)
+![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED)
+# Live Gifting Backend
+
 A backend REST API project built with **Spring Boot**, **PostgreSQL**, and **Docker**, inspired by the gifting system used in live streaming platforms such as TikTok LIVE.
 
 The project demonstrates modern backend development practices including layered architecture, DTO-based API design, exception handling, database persistence, and containerized deployment.
