@@ -196,3 +196,9 @@ This project strengthened practical experience in:
 **Seoyeon Lee**
 
 Backend engineering practice project developed as part of personal portfolio preparation for software engineering internship applications.
+
+## API Documentation (Swagger)
+
+The project includes OpenAPI documentation powered by Swagger UI.
+
+![Swagger UI](docs/swagger.png)
